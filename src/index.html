@@ -1,12 +1,48 @@
 <!DOCTYPE html>
 <html lang="sv">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TypeScript</title>
+    <link rel="stylesheet" href="css/main.scss">
     <script src="js/main.ts" type="module"></script>
 </head>
+
 <body>
-    
+    <main>
+        <h1>Kurser</h1>
+
+        <form id="courseForm">
+            <label for="courseCode">Kurskod:</label>
+            <br>
+            <input type="text" id="courseCode">
+            <br><br>
+            <label for="courseName">Kursnamn:</label>
+            <br>
+            <input type="text" id="courseName">
+            <br><br>
+            <label for="courseProgression">Progression:</label>
+            <br>
+            <select id="courseProgression">
+                <option value="1">A</option>
+                <option value="2">B</option>
+                <option value="3">C</option>
+            </select>
+            <br><br>
+            <label for="courseUrl">URL till kursplan:</label>
+            <br>
+            <input type="text" id="courseUrl">
+            <br><br>
+            <button type="submit">Spara kurs</button>
+            <button type="reset">Rensa formulär</button>
+        </form>
+        <br>
+        <div id="savedCourses"></div>
+        <br>
+        <button>Rensa sparade kurser</button>
+    </main>
+
 </body>
+
 </html>
