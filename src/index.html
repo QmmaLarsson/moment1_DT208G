@@ -16,11 +16,11 @@
         <form id="courseForm">
             <label for="courseCode">Kurskod:</label>
             <br>
-            <input type="text" id="courseCode">
+            <input type="text" id="courseCode" required>
             <br><br>
             <label for="courseName">Kursnamn:</label>
             <br>
-            <input type="text" id="courseName">
+            <input type="text" id="courseName" required>
             <br><br>
             <label for="courseProgression">Progression:</label>
             <br>
@@ -32,15 +32,13 @@
             <br><br>
             <label for="courseUrl">URL till kursplan:</label>
             <br>
-            <input type="text" id="courseUrl">
+            <input type="url" id="courseUrl" required>
             <br><br>
             <button type="submit">Spara kurs</button>
             <button type="reset">Rensa formulär</button>
         </form>
         <br>
-        <div id="savedCourses"></div>
-        <br>
-        <button>Rensa sparade kurser</button>
+        <div id="courseContainer"></div>
     </main>
 
 </body>
