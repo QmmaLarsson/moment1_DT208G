@@ -13,16 +13,20 @@
     <main>
         <h1>Kurser</h1>
 
+        <p id="info">På denna sida kan du spara de kurser du läser. Du kan lägga till kurskod, kursnamn, progression samt URL till
+            kursens kursplan. För att uppdatera en kurs så fyller du bara i informationen för kursen på nytt, när du trycker på
+            spara så kommer informationen för den valda kursen att uppdateras.</p>
+
         <form id="courseForm">
-            <label for="courseCode">Kurskod:</label>
+            <label for="courseCode"><strong>Kurskod:</strong></label>
             <br>
             <input type="text" id="courseCode" required>
             <br><br>
-            <label for="courseName">Kursnamn:</label>
+            <label for="courseName"><strong>Kursnamn:</strong></label>
             <br>
             <input type="text" id="courseName" required>
             <br><br>
-            <label for="courseProgression">Progression:</label>
+            <label for="courseProgression"><strong>Progression:</strong></label>
             <br>
             <select id="courseProgression">
                 <option value="A">A</option>
@@ -30,11 +34,11 @@
                 <option value="C">C</option>
             </select>
             <br><br>
-            <label for="courseUrl">URL till kursplan:</label>
+            <label for="courseUrl"><strong>URL till kursplan:</strong></label>
             <br>
             <input type="url" id="courseUrl" required>
             <br><br>
-            <button type="submit">Spara kurs</button>
+            <button id="submit" type="submit">Spara kurs</button>
             <button type="reset">Rensa formulär</button>
         </form>
         <br>

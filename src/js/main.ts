@@ -62,7 +62,7 @@ function displayCourses(course: Course): void {
 
     if (courseContainer) {
         //Ta bort kurs om denne har samma kurskod som en ny kurs
-        const existingCourseElement = courseContainer.querySelector(`[data-code="${course.code}"]`);
+        const existingCourseElement = courseContainer.querySelector(`[data-code="${course.code}"]`) as HTMLElement;
         if (existingCourseElement) {
             existingCourseElement.remove();
         }

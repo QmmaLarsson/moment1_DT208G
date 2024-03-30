@@ -1,1 +1,45 @@
 @use "base";
+
+//Rubriker
+@mixin heading-size ($size) {
+    @if $size ==1 {
+        /*Textstorlek 32px som standard*/
+        font-size: 3.2rem;
+    }
+
+    @else if $size ==2 {
+        /*Textstorlek 24 som standard*/
+        font-size: 2.4rem;
+    }
+
+    @else {
+        /*Textstorlek 20px som standard*/
+        font-size: 2rem;
+    }
+}
+
+//Knappar
+.button {
+    font-size: base.$main-fontsize;
+    font-family: base.$font-stack;
+    cursor: pointer;
+    background: linear-gradient(0deg, base.$primary-bg1, base.$primary-bg2);
+    color: base.$white;
+    padding: 10px;
+    border: none;
+    box-shadow: base.$primary-shadow;
+    transition: transform .2s;
+}
+
+.button:hover {
+transform: scale(1.2);
+}
+
+//Boxar
+.box {
+    background-color: base.$white;
+    padding: 20px;
+    border-radius: 20px;
+    width: 350px;
+    box-shadow: base.$primary-shadow;
+}
