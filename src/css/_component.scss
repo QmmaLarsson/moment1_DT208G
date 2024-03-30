@@ -1,6 +1,6 @@
 @use "base";
 
-//Rubriker
+//Regler för rubriker
 @mixin heading-size ($size) {
     @if $size ==1 {
         /*Textstorlek 32px som standard*/
@@ -18,7 +18,7 @@
     }
 }
 
-//Knappar
+//Regler för knappar
 .button {
     font-size: base.$main-fontsize;
     font-family: base.$font-stack;
@@ -35,11 +35,18 @@
 transform: scale(1.2);
 }
 
-//Boxar
+//Regler för boxar
 .box {
     background-color: base.$white;
     padding: 20px;
     border-radius: 20px;
     width: 350px;
     box-shadow: base.$primary-shadow;
+}
+
+//Regler för skärmstorlekar med en maxbredd på 400px
+@media screen and (max-width: 400px) {
+    .box {
+        width: 230px;
+    }  
 }

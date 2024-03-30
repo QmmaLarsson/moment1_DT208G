@@ -2,12 +2,13 @@
 @use "component";
 
 html {
-    /*62,5% av 16px ger 10px*/
+    //62,5% av 16px ger 10px
     font-size: 62.5%;
 }
 
 body {
     min-height: 100vh;
+    //Textstorlek 16px som standard
     font-size: base.$main-fontsize;
     font-family: base.$font-stack;
     line-height: 1.5;
@@ -67,6 +68,13 @@ main {
     #submit {
         margin-right: 10px;
     }
+}
+
+//Regler för skärmstorlekar med en maxbredd på 400px
+@media screen and (max-width: 400px) {
+    #submit {
+        margin-bottom: 10px;
+    } 
 }
 
 #courseContainer {
