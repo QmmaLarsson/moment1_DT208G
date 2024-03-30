@@ -23,8 +23,17 @@ function saveToLocalStorage(course: Course): void {
         storedCoursesArr = JSON.parse(storedCourses);
     }
 
-    //Lägg till ny information till den befintliga
-    storedCoursesArr.push(course);
+    //Hitta index för kursen med samma kurs kod, om den finns
+    const courseIndex: number = storedCoursesArr.findIndex((c: Course) => c.code === course.code);
+
+    //If-sats som kontrollerar om kursen redan finns i arrayen
+    if (courseIndex !== -1) {
+        //Ta bort kurs från localStorage
+        storedCoursesArr.splice(courseIndex, 1, course);
+    } else {
+        //Lägg till ny information i arrayen
+        storedCoursesArr.push(course);
+    }
 
     //Lagrar arrayen i en JSON-string och lagrar i localStorage
     localStorage.setItem("courses", JSON.stringify(storedCoursesArr));
@@ -52,7 +61,15 @@ function displayCourses(course: Course): void {
     const courseContainer = document.getElementById("courseContainer") as HTMLDivElement;
 
     if (courseContainer) {
+        //Ta bort kurs om denne har samma kurskod som en ny kurs
+        const existingCourseElement = courseContainer.querySelector(`[data-code="${course.code}"]`);
+        if (existingCourseElement) {
+            existingCourseElement.remove();
+        }
+
         const courseElement = document.createElement("div") as HTMLDivElement;
+        //Kurskoden sätts som dataattribut på elementet
+        courseElement.dataset.code = course.code;
         courseElement.innerHTML = `
         <p><strong>Kurskod:</strong> ${course.code}</p>
         <p><strong>Kursnamn:</strong> ${course.name}</p>
@@ -77,27 +94,27 @@ function displayCourses(course: Course): void {
 }
 
 function removeFromLocalStorage(course: Course): void {
-        //Läs in befintlig information från localStorage
-        const storedCourses: string | null = localStorage.getItem("courses");
+    //Läs in befintlig information från localStorage
+    const storedCourses: string | null = localStorage.getItem("courses");
 
-        //Spara befintlig information i en array
-        let storedCoursesArr: Course[] = [];
+    //Spara befintlig information i en array
+    let storedCoursesArr: Course[] = [];
 
-        if (storedCourses) {
-            storedCoursesArr = JSON.parse(storedCourses);
-        }
-    
-        //Hitta den kurs som ska tas bort
-        const courseIndex: number = storedCoursesArr.findIndex((c:Course) => c.code === course.code);
+    if (storedCourses) {
+        storedCoursesArr = JSON.parse(storedCourses);
+    }
 
-        //If-sats som kontrollerar om kursen redan finns i arrayen
-        if (courseIndex !== -1) {
-            //Ta bort kurs
-            storedCoursesArr.splice(courseIndex, 1);
-        }
-    
-        //Lagrar arrayen i en JSON-string och lagrar i localStorage
-        localStorage.setItem("courses", JSON.stringify(storedCoursesArr));
+    //Hitta index för den kurs som ska tas bort
+    const courseIndex: number = storedCoursesArr.findIndex((c: Course) => c.code === course.code);
+
+    //If-sats som kontrollerar om kursen redan finns i arrayen
+    if (courseIndex !== -1) {
+        //Ta bort kurs
+        storedCoursesArr.splice(courseIndex, 1);
+    }
+
+    //Lagrar arrayen i en JSON-string och lagrar i localStorage
+    localStorage.setItem("courses", JSON.stringify(storedCoursesArr));
 }
 
 //Hämta information om formulär
