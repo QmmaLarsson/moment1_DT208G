@@ -81,6 +81,7 @@ function displayCourses(course: Course): void {
         //Skapa knapp för att kunna radera kurs
         const deleteBtn = document.createElement("button") as HTMLButtonElement;
         deleteBtn.innerHTML = "Radera";
+        deleteBtn.setAttribute("type", "button");
 
         courseElement.appendChild(deleteBtn);
 
