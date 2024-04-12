@@ -120,7 +120,7 @@ function removeFromLocalStorage(course: Course): void {
 //Hämta information om formulär
 const courseForm = document.getElementById("courseForm") as HTMLFormElement;
 
-//Händelselyssnare med en funktion som gör att ordinarie funktion för submit-knappen inaktiveras
+//Händelselyssnare med funktion
 courseForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -130,20 +130,26 @@ courseForm.addEventListener("submit", (event) => {
     const courseProgression = document.getElementById("courseProgression") as HTMLInputElement;
     const courseUrl = document.getElementById("courseUrl") as HTMLInputElement;
 
-    //Ny kurs
-    const newCourse: Course = {
-        code: courseCode.value,
-        name: courseName.value,
-        progression: courseProgression.value,
-        url: courseUrl.value
-    }
+    //Inputvalidering
+    if (!courseCode.value.trim() || !courseName.value.trim() || !courseUrl.value.trim()) {
+    alert("Fyll i alla fält.");
+    return;
+}
 
-    //Rensar formuläret
-    courseForm.reset();
+//Ny kurs
+const newCourse: Course = {
+    code: courseCode.value,
+    name: courseName.value,
+    progression: courseProgression.value,
+    url: courseUrl.value
+}
 
-    //Sparar kursen i local storage
-    saveToLocalStorage(newCourse);
+//Rensar formuläret
+courseForm.reset();
 
-    //Använd display courses för att skriva ut kursinfo
-    displayCourses(newCourse);
+//Sparar kursen i local storage
+saveToLocalStorage(newCourse);
+
+//Använd display courses för att skriva ut kursinfo
+displayCourses(newCourse);
 });
